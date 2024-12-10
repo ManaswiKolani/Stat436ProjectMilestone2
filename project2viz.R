@@ -1,7 +1,8 @@
 library(shiny)
-library(viridisLite)
 library(tidyverse)
+library(viridisLite)
 
+# Load the dataset
 data <- read_csv("./data.csv")
 
 # UI
@@ -40,16 +41,17 @@ ui <- fluidPage(
                )), 
         column(6, 
                plotOutput("esgHeatmapPlot")      
-        ),
-        verbatimTextOutput("statisticsText"))),
+        )),
+      verbatimTextOutput("statisticsText")),
     
-    tableOutput("comparisonTable") 
-  ))
+    tableOutput("comparisonTable")
+  )
+)
 
 # Server
 server <- function(input, output, session) {
   
-  #summary stats ooutput
+  # Summary statistics output
   output$statisticsText <- renderPrint({
     filtered_data <- subset(data, industry == input$industry_input)
     
@@ -68,8 +70,7 @@ server <- function(input, output, session) {
     cat("Grade:", lowest_score$total_grade, "\n")
   })
   
-  
-  #output for table
+  # Table output
   output$comparisonTable <- renderTable({
     filtered_data <- subset(data, industry == input$industry_input)
     filtered_data %>%
@@ -77,20 +78,19 @@ server <- function(input, output, session) {
       arrange(desc(total_score))
   })
   
-  #bar plot output
+  # Bar plot output
   output$industrySummaryPlot <- renderPlot({
     filtered_data <- subset(data, industry == input$industry_input) 
     
     filtered_data <- filtered_data %>%
       mutate(grade_color = case_when(
         total_grade == "A" ~ "green4",
-        total_grade == "BBB" ~ "lightgreen",
-        total_grade == "BB" ~ "yellow",
+        total_grade == "BBB" ~ "green3",
+        total_grade == "BB" ~ "yellow3",
         total_grade == "B" ~ "orange",
         TRUE ~ "grey"
       ))
     
-    #create barplot
     ggplot(filtered_data, aes(x = reorder(name, -total_score), y = total_score, fill = grade_color)) +
       geom_bar(stat = "identity") +
       scale_fill_identity() +
@@ -99,29 +99,28 @@ server <- function(input, output, session) {
            y = "ESG Score",
            caption = "Bar colors represent the total_grade: A (green), BBB (light green), BB (yellow), B (orange)") +
       theme_minimal() +
-      theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
   })
   
-  #heat map output
+  # Heatmap output
   output$esgHeatmapPlot <- renderPlot({
-    
     heatmap_data <- data %>%
       filter(industry == input$industry_input) %>%
       select(name, environment_score, social_score, governance_score) %>%
       pivot_longer(cols = c(environment_score, social_score, governance_score), 
-                   names_to = "criteria", values_to = "score")
-    #create heat map
-    ggplot(heatmap_data, aes(x = name, y = criteria, fill = score)) +
+                   names_to = "criteria", values_to = "score") %>%
+      mutate(name = reorder(name, score, mean))
+    
+    ggplot(heatmap_data, aes(x = criteria, y = name, fill = score)) +
       geom_tile() +
       scale_fill_viridis_c() +
       labs(title = paste("ESG Scores Heatmap for", input$industry_input), 
-           x = "Company", y = "ESG Criteria",
+           x = "ESG Criteria", y = "Company",
            caption = "Heatmap displays the scores for Environmental, Social, and Governance criteria.") +
       theme_minimal() +
-      theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+      theme(axis.text.y = element_text(size = 8))
   })
-  
 }
 
-#run app
+# Run the app
 shinyApp(ui = ui, server = server)
