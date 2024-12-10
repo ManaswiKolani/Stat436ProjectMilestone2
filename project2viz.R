@@ -34,9 +34,9 @@ ui <- fluidPage(
         column(6, 
                plotOutput("industrySummaryPlot"),
                tags$ul(
-                 tags$li(style = "color: green4;", "A"),
-                 tags$li(style = "color: green3;", "BBB"),
-                 tags$li(style = "color: yellow3;", "BB"),
+                 tags$li(style = "color: green;", "A"),
+                 tags$li(style = "color: lightgreen;", "BBB"),
+                 tags$li(style = "color: yellow;", "BB"),
                  tags$li(style = "color: orange;", "B")
                )), 
         column(6, 
