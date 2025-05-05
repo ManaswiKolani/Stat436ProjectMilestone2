@@ -1,8 +1,8 @@
 # 🌿 ESGProject
 
-**Shiny App**: [https://ekass.shinyapps.io/ESG-Visual/](https://ekass.shinyapps.io/ESG-Visual/)  
-**Code**: [GitHub - ESGApp.R](https://github.com/ekassz/ESGProject/blob/main/ESGApp.R)  
-**Paper**: [`STAT436 Milestone 3`](./STAT436%20Milestone%203%20(1).pdf)
+**Shiny App**: [ESG Investment Visualization]([https://ekass.shinyapps.io/ESG-Visual/)  
+**Code**: [GitHub - ESGApp.R](https://github.com/ManaswiKolani/Stat436ProjectMilestone2/blob/main/ESGApp.R)  
+**Paper**: [`STAT436 Milestone 3`](https://github.com/ManaswiKolani/Stat436ProjectMilestone2/blob/main/STAT436%20Milestone%203%20(1).pdf)
 
 ## 📌 Overview
 
