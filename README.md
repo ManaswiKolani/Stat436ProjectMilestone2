@@ -6,7 +6,7 @@
 
 ## 📌 Overview
 
-**ESG** stands for *Environmental, Social, and Governance*, and refers to the three central factors used to measure the sustainability and ethical impact of an investment in a company. This project centers on building a web-based visual interface for hypothetical ESG investors, especially those interested in **clean energy companies**. Our goal is to empower a diverse range of users to make informed investment decisions that align financial success with environmental and social responsibility.
+**ESG** stands for *Environmental, Social, and Governance*, and refers to the three central factors used to measure the sustainability and ethical impact of an investment in a company. This project centers on building a visual interface for hypothetical ESG investors, especially those interested in **clean energy companies**. Our goal is to empower a diverse range of users to make informed investment decisions that align financial success with environmental and social responsibility.
 
 ## 🎯 Project Goal
 
