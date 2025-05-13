@@ -53,5 +53,5 @@ The dashboard is organized into four modular tabs, each focused on different asp
 ---
 
 This project was developed in **STAT 436 - Milestone 3**, Group 10.  
-Authors: Manaswi Kolani, Emili Robles, Jason Clark, Maya Blumenthal, Carson Stone, Neve Peterson
+Authors: Manaswi Kolani, Emili Robles, Jason Clark, Maya Blumenthal, Carson Stone, Neve Peterson  
 📅 December 2024
